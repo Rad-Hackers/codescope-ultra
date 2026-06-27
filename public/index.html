@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-i18n="pageTitle">CodeScope Ultra — منصة تحليل المواقع</title>
+  <meta name="description" content="منصة عربية احترافية لتحليل المواقع والكود المصدري و SEO والأمان والتقنيات.">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="orb a"></div><div class="orb b"></div><div class="noise"></div>
+<header class="top">
+  <div class="brand"><span class="logo">⌁</span><div><b>CodeScope Ultra</b><small data-i18n="brandSub">تحليل مواقع حقيقي بدون ميزات وهمية</small></div></div>
+  <nav>
+    <button onclick="setLang(currentLang==='ar'?'en':'ar')" id="langBtn" title="Language">EN</button>
+    <a class="telegram-chip" href="https://t.me/Rand2m" target="_blank" rel="noopener"><span>✦</span> Random Hackers</a>
+    <button onclick="document.body.classList.toggle('light');localStorage.codescopeTheme=document.body.classList.contains('light')?'light':'dark'" data-i18n="theme">المظهر</button>
+    <button onclick="print()" data-i18n="exportPdf">تصدير PDF</button>
+    <button onclick="downloadJSON()">تصدير JSON</button>
+    <button onclick="downloadCSV()">تصدير CSV</button>
+    <button onclick="saveHistory()" data-i18n="saveReport">حفظ التقرير</button>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <span class="badge" data-i18n="badge">جاهز لـ Render • Node.js Backend • أدوات حقيقية فقط</span>
+    <h1 data-i18n="heroTitle">افحص أي موقع بواجهة عربية فخمة وتحليل عميق</h1>
+    <p data-i18n="heroDesc">يعرض Source Code ويحلل SEO والأمان والتقنيات والـ APIs والموارد والروابط و DNS و WHOIS و Robots و Sitemap و Screenshot ومقارنة الأكواد.</p>
+  </div>
+  <div class="heroSide"><div class="scoreCard"><div id="score">--</div><span data-i18n="overallSeo">تقييم SEO العام</span><div class="bar"><i id="bar"></i></div><small id="grade">—</small></div><a class="community-card" href="https://t.me/Rand2m" target="_blank" rel="noopener"><small data-i18n="communityLabel">المجتمع الرسمي</small><b>Random Hackers</b><span data-i18n="communityText">تحديثات وأدوات وملاحظات تطويرية عبر تيليجرام</span></a></div>
+</section>
+<section class="panel">
+  <div class="tabs">
+    <button class="active" data-t="url" data-i18n="tabUrl">رابط موقع</button>
+    <button data-t="html" data-i18n="tabHtml">HTML محلي</button>
+    <button data-t="diff" data-i18n="tabDiff">مقارنة</button>
+    <button data-t="history" data-i18n="tabHistory">السجل</button>
+    <button data-t="help" data-i18n="tabHelp">معلومات</button>
+  </div>
+  <div id="urlBox" class="box">
+    <div class="row"><input id="url" data-i18n-placeholder="urlPlaceholder" placeholder="example.com أو https://example.com"><button class="primary" onclick="analyzeUrl()" data-i18n="analyzeFull">تحليل شامل</button></div>
+    <div class="actions"><button onclick="dnsLookup()">فحص DNS</button><button onclick="whoisLookup()">بيانات WHOIS</button><button onclick="robots()">Robots / Sitemap</button><button onclick="shot()">لقطة شاشة</button><button onclick="copyReportLink()" data-i18n="copyScanLink">نسخ رابط الفحص</button></div>
+  </div>
+  <div id="htmlBox" class="box hide"><input type="file" id="file" accept=".html,.htm"><textarea id="html" data-i18n-placeholder="htmlPlaceholder" placeholder="الصق كود HTML هنا أو ارفع ملف HTML"></textarea><button class="primary" onclick="analyzeHtml()" data-i18n="analyzeHtml">تحليل HTML</button></div>
+  <div id="diffBox" class="box hide"><div class="cols"><textarea id="a" data-i18n-placeholder="codeA" placeholder="الكود الأول"></textarea><textarea id="b" data-i18n-placeholder="codeB" placeholder="الكود الثاني"></textarea></div><button class="primary" onclick="diff()" data-i18n="compareCode">قارن الكودين</button></div>
+  <div id="historyBox" class="box hide"><div class="actions"><button onclick="clearHistory()" data-i18n="clearHistory">مسح السجل</button></div><div id="history"></div></div>
+  <div id="helpBox" class="box hide"><div class="sec"><h3 data-i18n="truthTitle">ملاحظة مهمة</h3><p data-i18n="truthText">كل زر موجود هنا مربوط بوظيفة حقيقية في الواجهة أو السيرفر. لا توجد أزرار وهمية. بعض المواقع قد تمنع الفحص أو Screenshot بسبب الحماية، وسيظهر الخطأ الحقيقي بدل نتيجة مزيفة.</p></div><div class="sec rh-sec"><h3>Random Hackers</h3><p data-i18n="communityHelp">القناة الرسمية للمشروع والمجتمع، لمتابعة التحديثات والأدوات الجديدة.</p><a class="rh-btn" href="https://t.me/Rand2m" target="_blank" rel="noopener">Telegram · Random Hackers</a></div></div>
+</section>
+<section class="kpis"><div><b id="links">0</b><span data-i18n="links">روابط</span></div><div><b id="tech">0</b><span data-i18n="techs">تقنيات</span></div><div><b id="api">0</b><span>واجهات API</span></div><div><b id="img">0</b><span data-i18n="images">صور</span></div><div><b id="sec">0</b><span>الأمان</span></div></section>
+<section class="grid"><aside id="out" class="result"><div class="empty" data-i18n="emptyStart">ابدأ بتحليل رابط أو كود HTML</div></aside><section class="codeWrap"><div class="codeTools"><input id="search" data-i18n-placeholder="searchCode" placeholder="بحث داخل الكود..." oninput="findInCode()"><button onclick="copyCode()" data-i18n="copyCode">نسخ الكود</button><button onclick="downloadHTML()" data-i18n="downloadHtml">تحميل HTML</button></div><pre id="code"></pre></section></section>
+</main><footer><span data-i18n="footer">CodeScope Ultra — منصة تحليل خاصة جاهزة للنشر</span><a href="https://t.me/Rand2m" target="_blank" rel="noopener">Random Hackers</a></footer><a class="float-telegram" href="https://t.me/Rand2m" target="_blank" rel="noopener" aria-label="Random Hackers Telegram">↗</a><script src="/app.js"></script></body></html>
